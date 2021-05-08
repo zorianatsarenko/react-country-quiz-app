@@ -1,0 +1,10 @@
+.Game {
+  min-height: 100vh;
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: rgb(247, 239, 255);
+}
