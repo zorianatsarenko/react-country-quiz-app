@@ -7,12 +7,19 @@ function Game() {
   const [countries, setCountries] = useState([]);
   const [options, setOptions] = useState([]);
   useEffect(() => {
-    async function getData() {
-      let response = await axios.get(URL);
-      console.log(response);
-    }
-    getData();
-  });
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    let response = await axios.get(URL);
+    setCountries(response.data);
+    displayData();
+  };
+  const displayData = () => {
+    countries.map((country) => {
+      console.log(country.name);
+      return <h1>country.name</h1>;
+    });
+  };
   return (
     <div>
       <h1>Game Component</h1>
@@ -21,3 +28,5 @@ function Game() {
 }
 
 export default Game;
+
+// src/components/MainContainer.tsx
