@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Choices from "./Choices";
 import "./Game.css";
 const URL = "https://restcountries.eu/rest/v2/all";
 
@@ -37,8 +38,8 @@ function Game() {
   return (
     <div className="Game">
       <h1>Game Component</h1>
-      <div>sfsdf</div>
-      <>blah blah</>
+
+      <Choices />
     </div>
   );
 }
