@@ -8,3 +8,10 @@
 
   background-color: rgb(247, 239, 255);
 }
+
+.Game button {
+  padding: 0.7rem;
+  background-color: blueviolet;
+  color: white;
+  outline: none;
+}

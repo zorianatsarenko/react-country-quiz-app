@@ -1,47 +1,43 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Choices from "./Choices";
-import Answer from "./Answer";
-import "./Game.css";
-const URL = "https://restcountries.eu/rest/v2/all";
-
+import axios from "axios";
 function Game() {
   const [countries, setCountries] = useState([]);
   const [options, setOptions] = useState([]);
-  const [correctOption, setCorrectOption] = useState([]);
+  const [correctOption, setCorrectOption] = useState(undefined);
+
   useEffect(() => {
-    fetchData();
-    getOptions();
+    const getCountries = async () => {
+      const response = await axios.get("https://restcountries.eu/rest/v2/all");
+      setCountries(response.data);
+    };
+
+    getCountries();
   }, []);
-  const fetchData = async () => {
-    let response = await axios.get(URL);
-    setCountries(response.data);
-    const correctOption = Math.floor(Math.random() * countries.length);
 
-    setCorrectOption(correctOption);
-  };
-  const displayData = () => {
-    countries.map((country) => {
-      return <Answer country={country.name} />;
-    });
-  };
-  const getOptions = () => {
-    const options = [correctOption];
+  useEffect(() => {
+    let correctChoice = Math.floor(Math.random() * countries.length);
+    setCorrectOption(correctChoice);
+  }, [countries]);
 
-    while (options.length < 4) {
-      let option = Math.floor(Math.random() * countries.length);
-      options.push(option);
+  useEffect(() => {
+    console.log("correct option changes");
+    const choices = [];
+    choices[0] = correctOption;
+    for (let i = 1; i < 4; i++) {
+      let choice = Math.floor(Math.random() * countries.length);
+      if (choices.indexOf(choice) === -1) {
+        choices.push(choice);
+      }
     }
-    setOptions(options);
-  };
+    setOptions(choices);
+  }, [correctOption]);
+
   return (
-    <div className="Game">
-      <h1>Game Component</h1>
-      {displayData()}
+    <div>
+      <h1>Guess which country this flag belongs to </h1>
+      <button>start a game</button>
     </div>
   );
 }
 
 export default Game;
-
-// src/components/MainContainer.tsx
