@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Choices from "./Choices";
+import Answer from "./Answer";
 import "./Game.css";
 const URL = "https://restcountries.eu/rest/v2/all";
 
@@ -18,12 +19,10 @@ function Game() {
     const correctOption = Math.floor(Math.random() * countries.length);
 
     setCorrectOption(correctOption);
-    displayData();
   };
   const displayData = () => {
     countries.map((country) => {
-      console.log(country.name);
-      return <h1>country.name</h1>;
+      return <Answer country={country.name} />;
     });
   };
   const getOptions = () => {
@@ -38,8 +37,7 @@ function Game() {
   return (
     <div className="Game">
       <h1>Game Component</h1>
-
-      <Choices />
+      {displayData()}
     </div>
   );
 }

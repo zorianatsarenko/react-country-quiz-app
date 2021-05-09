@@ -1,5 +1,5 @@
-function Answer() {
-  return <div>Germany</div>;
+function Answer(props) {
+  return <div>{props.country}</div>;
 }
 
 export default Answer;
