@@ -1,7 +1,18 @@
 function Option(props) {
   return (
     <>
-      <div className="Option" onClick={() => props.handleClick(props.id)}>
+      <div
+        disabled={props.isDisabled}
+        style={{
+          backgroundColor: props.showAnswers
+            ? props.isCorrect
+              ? "lightgreen"
+              : "tomato"
+            : "",
+        }}
+        className="Option"
+        onClick={() => props.handleClick(props.id)}
+      >
         {props.country}
       </div>
     </>

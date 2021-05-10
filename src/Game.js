@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Game.css";
 import Options from "./Options";
+import shuffle from "./shuffle";
 
 function Game() {
   const [countries, setCountries] = useState([]);
@@ -9,6 +10,9 @@ function Game() {
   const [correctOption, setCorrectOption] = useState(undefined);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [selected, setSelected] = useState(undefined);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -34,20 +38,34 @@ function Game() {
         choices.push(choice);
       }
     }
+    shuffle(choices);
     setOptions(choices);
   }, [correctOption]);
 
   function handleClick(element) {
+    setDisabled(true);
     if (element === correctOption) {
+      setSelected(element);
       setScore(score + 1);
+      setShowAnswers(true);
     } else {
       setGameOver(true);
     }
   }
 
+  function handleTryAgain() {
+    setCorrectOption(Math.floor(Math.random() * countries.length));
+    setShowAnswers(false);
+    setDisabled(false);
+    setGameOver(false);
+    setScore(0);
+  }
+
   function handleNextClick() {
     //chnage option?
     setCorrectOption(Math.floor(Math.random() * countries.length));
+    setShowAnswers(false);
+    setDisabled(false);
   }
 
   if (countries.length < 1) {
@@ -63,11 +81,14 @@ function Game() {
           style={{ width: "100%" }}
           src={countries[correctOption].flag}
         ></img>
+        <div>{correctOption === selected && "correct!!!"}</div>
         <Options
+          isDisabled={disabled}
           options={options}
           countries={countries}
           correct={correctOption}
           handleClick={handleClick}
+          showAnswers={showAnswers}
         />
         <button onClick={() => handleNextClick()}>next</button>
         <div>{score} guessed</div>
@@ -77,7 +98,7 @@ function Game() {
   return (
     <div className="Game">
       <h1>Not Bad want to try again?</h1>
-      <button>try again</button>
+      <button onClick={() => handleTryAgain()}>try again</button>
       <div>{score} guessed</div>
     </div>
   );
