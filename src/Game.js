@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Game.css";
+import Options from "./Options";
+
 function Game() {
   const [countries, setCountries] = useState([]);
   const [options, setOptions] = useState([]);
@@ -31,11 +34,15 @@ function Game() {
     }
     setOptions(choices);
   }, [correctOption]);
-
+  if (countries.length < 1) {
+    return <h1>Loading</h1>;
+  }
   return (
-    <div>
+    <div className="Game">
       <h1>Guess which country this flag belongs to </h1>
-      <button>start a game</button>
+      <button>start a games</button>
+      <img style={{ width: "100%" }} src={countries[correctOption].flag}></img>
+      <Options options={options} countries={countries} />
     </div>
   );
 }
