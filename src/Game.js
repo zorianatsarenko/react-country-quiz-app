@@ -42,7 +42,11 @@ function Game() {
       <h1>Guess which country this flag belongs to </h1>
       <button>start a games</button>
       <img style={{ width: "100%" }} src={countries[correctOption].flag}></img>
-      <Options options={options} countries={countries} />
+      <Options
+        options={options}
+        countries={countries}
+        correct={correctOption}
+      />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Option from "./Option";
 
-function Options({ options, countries }) {
+function Options({ options, countries, correct }) {
   console.log(options);
   console.log(countries);
 
@@ -11,6 +11,7 @@ function Options({ options, countries }) {
           <Option
             country={countries[option].name}
             key={countries[option].numericCode}
+            isCorrect={correct === option}
           />
         );
       })}
