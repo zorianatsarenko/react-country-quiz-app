@@ -9,7 +9,7 @@ function Option(props) {
           backgroundColor: props.showAnswers
             ? props.isCorrect
               ? "#4c915f"
-              : "#de182c"
+              : ""
             : "",
         }}
         className="Option"

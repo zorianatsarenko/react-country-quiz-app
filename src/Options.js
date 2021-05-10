@@ -7,6 +7,7 @@ function Options({
   handleClick,
   showAnswers,
   isDisabled,
+  selected,
 }) {
   console.log(options);
 
@@ -21,7 +22,9 @@ function Options({
             country={countries[option].name}
             key={countries[option].numericCode}
             isCorrect={correct === option}
+            correct={correct}
             handleClick={handleClick}
+            selected={selected}
           />
         );
       })}

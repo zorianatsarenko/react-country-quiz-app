@@ -83,7 +83,7 @@ function Game() {
           <h3>Which country does this flag belong to?</h3>
 
           <img style={{}} src={countries[correctOption].flag}></img>
-          <div>{correctOption === selected && "correct!!!"}</div>
+
           <Options
             isDisabled={disabled}
             options={options}
@@ -91,7 +91,9 @@ function Game() {
             correct={correctOption}
             handleClick={handleClick}
             showAnswers={showAnswers}
+            selected={selected}
           />
+
           <button
             className="Game-next-btn"
             disabled={disableNext}
@@ -105,9 +107,30 @@ function Game() {
   }
   return (
     <div className="Game">
-      <h1>Not Bad want to try again?</h1>
-      <button onClick={() => handleTryAgain()}>try again</button>
-      <div>{score} guessed</div>
+      <div className="Game-card">
+        <div>You score is {score}</div>
+        <h3>Which country does this flag belong to?</h3>
+
+        <img style={{}} src={countries[correctOption].flag}></img>
+
+        <Options
+          isDisabled={disabled}
+          options={options}
+          countries={countries}
+          correct={correctOption}
+          handleClick={handleClick}
+          showAnswers={showAnswers}
+          selected={selected}
+        />
+
+        <button
+          className="Game-next-btn"
+          disabled={false}
+          onClick={() => handleTryAgain()}
+        >
+          Try Again
+        </button>
+      </div>
     </div>
   );
 }
