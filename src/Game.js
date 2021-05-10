@@ -7,6 +7,8 @@ function Game() {
   const [countries, setCountries] = useState([]);
   const [options, setOptions] = useState([]);
   const [correctOption, setCorrectOption] = useState(undefined);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -34,19 +36,49 @@ function Game() {
     }
     setOptions(choices);
   }, [correctOption]);
+
+  function handleClick(element) {
+    if (element === correctOption) {
+      setScore(score + 1);
+    } else {
+      setGameOver(true);
+    }
+  }
+
+  function handleNextClick() {
+    //chnage option?
+    setCorrectOption(Math.floor(Math.random() * countries.length));
+  }
+
   if (countries.length < 1) {
     return <h1>Loading</h1>;
   }
+
+  if (!gameOver) {
+    return (
+      <div className="Game">
+        <h1>Guess which country this flag belongs to </h1>
+
+        <img
+          style={{ width: "100%" }}
+          src={countries[correctOption].flag}
+        ></img>
+        <Options
+          options={options}
+          countries={countries}
+          correct={correctOption}
+          handleClick={handleClick}
+        />
+        <button onClick={() => handleNextClick()}>next</button>
+        <div>{score} guessed</div>
+      </div>
+    );
+  }
   return (
     <div className="Game">
-      <h1>Guess which country this flag belongs to </h1>
-      <button>start a games</button>
-      <img style={{ width: "100%" }} src={countries[correctOption].flag}></img>
-      <Options
-        options={options}
-        countries={countries}
-        correct={correctOption}
-      />
+      <h1>Not Bad want to try again?</h1>
+      <button>try again</button>
+      <div>{score} guessed</div>
     </div>
   );
 }
