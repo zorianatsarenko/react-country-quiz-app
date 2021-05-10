@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  background-color: rgb(247, 239, 255);
+  padding: 2rem;
+  background-color: rgb(219, 198, 240);
 }
 
 .Game button {
@@ -14,4 +14,20 @@
   background-color: blueviolet;
   color: white;
   outline: none;
+}
+
+.Option {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  cursor: pointer;
+  background-color: blueviolet;
+  color: white;
+  margin-top: 0.5rem;
+  border-radius: 15px;
+}
+
+.Option:hover {
+  background-color: rgb(82, 26, 134);
 }
