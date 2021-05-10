@@ -13,6 +13,7 @@ function Game() {
   const [showAnswers, setShowAnswers] = useState(false);
   const [selected, setSelected] = useState(undefined);
   const [disabled, setDisabled] = useState(false);
+  const [disableNext, setDisableNext] = useState(true);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -48,6 +49,7 @@ function Game() {
       setSelected(element);
       setScore(score + 1);
       setShowAnswers(true);
+      setDisableNext(false);
     } else {
       setGameOver(true);
     }
@@ -66,6 +68,7 @@ function Game() {
     setCorrectOption(Math.floor(Math.random() * countries.length));
     setShowAnswers(false);
     setDisabled(false);
+    setDisableNext(true);
   }
 
   if (countries.length < 1) {
@@ -75,23 +78,28 @@ function Game() {
   if (!gameOver) {
     return (
       <div className="Game">
-        <h1>Guess which country this flag belongs to </h1>
+        <div className="Game-card">
+          <div>{score} guessed</div>
+          <h3>Which country does this flag belong to?</h3>
 
-        <img
-          style={{ width: "100%" }}
-          src={countries[correctOption].flag}
-        ></img>
-        <div>{correctOption === selected && "correct!!!"}</div>
-        <Options
-          isDisabled={disabled}
-          options={options}
-          countries={countries}
-          correct={correctOption}
-          handleClick={handleClick}
-          showAnswers={showAnswers}
-        />
-        <button onClick={() => handleNextClick()}>next</button>
-        <div>{score} guessed</div>
+          <img style={{}} src={countries[correctOption].flag}></img>
+          <div>{correctOption === selected && "correct!!!"}</div>
+          <Options
+            isDisabled={disabled}
+            options={options}
+            countries={countries}
+            correct={correctOption}
+            handleClick={handleClick}
+            showAnswers={showAnswers}
+          />
+          <button
+            className="Game-next-btn"
+            disabled={disableNext}
+            onClick={() => handleNextClick()}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }

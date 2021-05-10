@@ -1,13 +1,15 @@
+import "./Options.css";
 function Option(props) {
   return (
     <>
       <div
+        className="Option"
         disabled={props.isDisabled}
         style={{
           backgroundColor: props.showAnswers
             ? props.isCorrect
-              ? "lightgreen"
-              : "tomato"
+              ? "#4c915f"
+              : "#de182c"
             : "",
         }}
         className="Option"

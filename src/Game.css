@@ -1,39 +1,74 @@
+h1 {
+  font-weight: 100;
+  color: white;
+  font-size: 75px;
+  line-height: 74px;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+}
+
 .Game {
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Game img {
+  width: 8rem;
+}
+
+.Game-card {
+  /* min-height: 100vh; */
+  margin-top: 1rem;
+  border-radius: 0.7rem;
   width: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-  background-color: rgb(219, 198, 240);
+  background-color: #fafafa;
+  border: 2px solid #2d005b;
+  border-radius: 12px;
+  box-shadow: 8px 12px 24px -11px rgba(122, 128, 152, 0.74);
+  -webkit-box-shadow: 8px 12px 24px -11px rgba(122, 128, 152, 0.74);
+  -moz-box-shadow: 8px 12px 24px -11px rgba(122, 128, 152, 0.74);
 }
 
 .Game button {
+  margin-top: 1rem;
   padding: 0.7rem;
-  background-color: blueviolet;
-  color: white;
+  background-color: #f1962e;
+  color: #d3e1e7;
   outline: none;
+  border: none;
+  width: 40%;
+  cursor: pointer;
+  align-self: flex-end;
+  border-radius: 10px;
 }
 
 .Option {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1rem 0.3rem;
+  text-align: center;
   cursor: pointer;
-  background-color: blueviolet;
-  color: white;
+  background-color: #4d7586;
+  color: #f1f1e6;
   margin-top: 0.5rem;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
+  width: 100%;
 }
 
 .Option:hover {
-  background-color: rgb(82, 26, 134);
+  background-color: #3d6b80;
 }
 
 div[disabled] {
   pointer-events: none;
   opacity: 0.7;
+}
+button:disabled {
+  cursor: auto;
 }

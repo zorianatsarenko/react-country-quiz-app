@@ -1,5 +1,5 @@
 import Option from "./Option";
-
+import "./Options.css";
 function Options({
   options,
   countries,
@@ -11,7 +11,7 @@ function Options({
   console.log(options);
 
   return (
-    <div>
+    <div className="Options">
       {options.map((option) => {
         return (
           <Option
