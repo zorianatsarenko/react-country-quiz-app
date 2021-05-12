@@ -92,6 +92,7 @@ function Game() {
             handleClick={handleClick}
             showAnswers={showAnswers}
             selected={selected}
+            isCorrect={correctOption === selected}
           />
 
           <button
@@ -121,6 +122,7 @@ function Game() {
           handleClick={handleClick}
           showAnswers={showAnswers}
           selected={selected}
+          isCorrect={correctOption === selected}
         />
 
         <button

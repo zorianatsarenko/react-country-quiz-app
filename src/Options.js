@@ -8,6 +8,7 @@ function Options({
   showAnswers,
   isDisabled,
   selected,
+  isCorrect,
 }) {
   console.log(options);
 
@@ -21,7 +22,7 @@ function Options({
             id={option}
             country={countries[option].name}
             key={countries[option].numericCode}
-            isCorrect={correct === option}
+            isCorrect={isCorrect}
             correct={correct}
             handleClick={handleClick}
             selected={selected}

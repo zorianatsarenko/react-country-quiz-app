@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Options.css";
 function Option(props) {
   return (
@@ -6,10 +7,10 @@ function Option(props) {
         className="Option"
         disabled={props.isDisabled}
         style={{
-          backgroundColor: props.showAnswers
+          backgroundColor: props.showAnswer
             ? props.isCorrect
-              ? "#4c915f"
-              : ""
+              ? "green"
+              : "red"
             : "",
         }}
         className="Option"
