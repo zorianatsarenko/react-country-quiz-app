@@ -1,19 +1,39 @@
 import { useState } from "react";
 import "./Options.css";
 function Option(props) {
+  console.log(props)
+//correctOption - random id 
+//isCorrect    = selected === correct Option
+//selected - id of selected
+  const classLogic = () => {
+    console.log(props.clicked)
+  if (props.showAnswers && (props.selected === props.id || props.correct === props.id))  {
+     
+      if(props.isCorrect || props.correct === props.id){
+        return       'green'
+      }
+       if(!props.isCorrect){
+         return 'red'
+       }
+       else if(props.correct === props.id){
+        return 'green'
+      }
+     } 
+    else {
+       return ''
+     }
+  };
+
+  
+  const classes = `Option ${classLogic()}`
+  
   return (
     <>
       <div
-        className="Option"
+        className={classes}
         disabled={props.isDisabled}
-        style={{
-          backgroundColor: props.showAnswer
-            ? props.isCorrect
-              ? "green"
-              : "red"
-            : "",
-        }}
-        className="Option"
+       
+        
         onClick={() => props.handleClick(props.id)}
       >
         {props.country}
@@ -23,3 +43,5 @@ function Option(props) {
 }
 
 export default Option;
+
+

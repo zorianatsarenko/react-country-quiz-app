@@ -9,6 +9,7 @@ function Options({
   isDisabled,
   selected,
   isCorrect,
+  clicked
 }) {
   console.log(options);
 
@@ -26,6 +27,8 @@ function Options({
             correct={correct}
             handleClick={handleClick}
             selected={selected}
+            isCorrect={isCorrect}
+            clicked={clicked}
           />
         );
       })}
@@ -34,3 +37,5 @@ function Options({
 }
 
 export default Options;
+
+

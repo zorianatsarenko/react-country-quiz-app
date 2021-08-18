@@ -14,6 +14,7 @@ function Game() {
   const [selected, setSelected] = useState(undefined);
   const [disabled, setDisabled] = useState(false);
   const [disableNext, setDisableNext] = useState(true);
+  const [clicked, setClicked] = useState(false)
 
   useEffect(() => {
     const getCountries = async () => {
@@ -44,13 +45,18 @@ function Game() {
   }, [correctOption]);
 
   function handleClick(element) {
+    
+    setSelected(element)
+    console.log(element)
+    setShowAnswers(true);
     setDisabled(true);
     if (element === correctOption) {
       setSelected(element);
       setScore(score + 1);
       setShowAnswers(true);
       setDisableNext(false);
-    } else {
+    } else if(element !== correctOption) {
+      setShowAnswers(true);
       setGameOver(true);
     }
   }
@@ -86,6 +92,7 @@ function Game() {
           <img style={{}} src={countries[correctOption].flag}></img>
 
           <Options
+            clicked={clicked}
             isDisabled={disabled}
             options={options}
             countries={countries}
