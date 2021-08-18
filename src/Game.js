@@ -84,7 +84,7 @@ function Game() {
   if (!gameOver) {
     return (
       <div className="Game">
-        <div className="title">Country Quiz Game </div>
+        
         <div className="Game-card">
           <div>{score} guessed</div>
           <h3>Which country does this flag belong to?</h3>
@@ -116,7 +116,7 @@ function Game() {
   }
   return (
     <div className="Game">
-      <div className="title">Country Quiz Game </div>
+      
       <div className="Game-card">
         <div>You score is {score}</div>
         <h3>Which country does this flag belong to?</h3>
