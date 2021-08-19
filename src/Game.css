@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #8357eb;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Montserrat";
+}
 
 h1 {
   font-weight: 100;
@@ -20,21 +32,7 @@ h1 {
   width: 8rem;
 }
 
-
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #8357eb;
-  width: 100vw;
-  height: 100vh;
-}
-
 .title {
- 
 }
 
 .Game-card {
@@ -48,7 +46,8 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 2rem;
-
+  font-family: "Montserrat";
+  font-weight: 300;
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
 
@@ -75,11 +74,11 @@ body {
 button:hover {
   background: #8357eb;
   color: white;
-	letter-spacing: 1px;
-	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
-	transition: all 0.4s ease 0s;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s;
 }
 
 .Option {
@@ -92,6 +91,40 @@ button:hover {
   border-radius: 10px;
   cursor: pointer;
   width: 100%;
+}
+
+.Loader {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-right: 3em;
+  font-size: 3rem;
+  width: 2.8em;
+  height: 2.8em;
+  border-radius: 50%;
+}
+
+.Loader:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-left-color: rgb(255, 255, 255);
+  border-top-color: rgb(235, 202, 255);
+  animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .Option:hover {

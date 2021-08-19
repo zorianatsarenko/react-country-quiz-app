@@ -14,7 +14,7 @@ function Game() {
   const [selected, setSelected] = useState(undefined);
   const [disabled, setDisabled] = useState(false);
   const [disableNext, setDisableNext] = useState(true);
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     const getCountries = async () => {
@@ -45,9 +45,8 @@ function Game() {
   }, [correctOption]);
 
   function handleClick(element) {
-    
-    setSelected(element)
-    console.log(element)
+    setSelected(element);
+    console.log(element);
     setShowAnswers(true);
     setDisabled(true);
     if (element === correctOption) {
@@ -55,7 +54,7 @@ function Game() {
       setScore(score + 1);
       setShowAnswers(true);
       setDisableNext(false);
-    } else if(element !== correctOption) {
+    } else if (element !== correctOption) {
       setShowAnswers(true);
       setGameOver(true);
     }
@@ -78,13 +77,12 @@ function Game() {
   }
 
   if (countries.length < 1) {
-    return <h1>Loading</h1>;
+    return <span className="Loader"> </span>;
   }
 
   if (!gameOver) {
     return (
       <div className="Game">
-        
         <div className="Game-card">
           <div>{score} guessed</div>
           <h3>Which country does this flag belong to?</h3>
@@ -116,9 +114,8 @@ function Game() {
   }
   return (
     <div className="Game">
-      
       <div className="Game-card">
-        <div>You score is {score}</div>
+        <div>Your score is {score}</div>
         <h3>Which country does this flag belong to?</h3>
 
         <img style={{}} src={countries[correctOption].flag}></img>
